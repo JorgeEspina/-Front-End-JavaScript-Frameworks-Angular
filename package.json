@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/JorgeEspina/Front-End-JavaScript-Frameworks-Angular/issues"
   },
-  "homepage": "https://github.com/JorgeEspina/Front-End-JavaScript-Frameworks-Angular#readme"
+  "homepage": "https://github.com/JorgeEspina/Front-End-JavaScript-Frameworks-Angular#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
 }
