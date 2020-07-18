@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PromotionService } from './promotion.service';
+import { LeaderService } from './leader.service';
 
-describe('PromotionserviceService', () => {
-  let service: PromotionService;
+describe('LeaderService', () => {
+  let service: LeaderService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PromotionService);
+    service = TestBed.inject(LeaderService);
   });
 
   it('should be created', () => {
