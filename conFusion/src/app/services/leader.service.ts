@@ -22,7 +22,7 @@ export class LeaderService {
 import { Injectable } from '@angular/core';
 import { Leader } from '../menu/shared/leader';
 import { LEADERS } from '../menu/shared/leaders';
-import { promise } from 'protractor';
+//import { promise } from 'protractor';
 
 @Injectable({
   providedIn: 'root'

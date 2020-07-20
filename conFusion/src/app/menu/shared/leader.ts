@@ -1,5 +1,3 @@
-
-
 export class Leader {
     id: string;
     name: string;
