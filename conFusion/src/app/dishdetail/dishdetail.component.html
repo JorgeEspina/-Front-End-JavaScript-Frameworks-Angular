@@ -20,7 +20,7 @@
               <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
           </mat-card-title>
         </mat-card-header>
-        <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+        <img mat-card-image src="{{BaseURL + dish.image}} "alt={{dish.name}}>
         <mat-card-content>
           <p>{{dish.description}}
           </p>
@@ -36,7 +36,7 @@
       </mat-card>
     </div>
 
-  <div fxFlex="40" *ngIf="dish" >
+    <div fxFlex="40" *ngIf="dish" >
       <mat-list >
         <h1>Comments</h1>
           <mat-list-item *ngFor="let comment of dish.comments">
@@ -49,20 +49,16 @@
       </mat-list>
       <div *ngIf="arr">
           <mat-list-item  *ngFor="let val of arr">
-
               <p matLine>{{val.comment}}</p>
               <p matLine>{{val.rating}} Stars</p>
               <p matLine>-- {{val.author}} {{val.date | date }}</p>
-
           </mat-list-item>
           </div>
 
           <mat-list-item *ngIf="commentForm.valid">
-
               <p matLine>{{commentForm.value.comment}}</p>
               <p matLine>{{commentForm.value.rating}} Stars</p>
               <p matLine>-- {{commentForm.value.author}} </p>
-
           </mat-list-item>
 
       <form novalidate [formGroup]="commentForm"  #fform="ngForm"  (ngSubmit)="onSubmit()">
@@ -97,5 +93,5 @@
           <h2>Error</h2>
           <h4>{{errMess}}</h4>
       </div>
-  </div>
+    </div>
 </div>

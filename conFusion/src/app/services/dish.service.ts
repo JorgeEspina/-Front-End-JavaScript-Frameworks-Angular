@@ -90,28 +90,43 @@ import { Dish } from '../menu/shared/dish';
 import { DISHES } from '../menu/shared/dishes';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { baseURL } from '../menu/shared/baseurl';
+import { map, catchError } from 'rxjs/operators';
+import { ProcessHttpmsgService } from '../services/process-httpmsg.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  constructor() { }
+  constructor(private http: HttpClient, private ProcessHttpmsgService: ProcessHttpmsgService ) {
+
+  }
+
 
   getDishes(): Observable<Dish[]> {
-    return of(DISHES).pipe(delay(2000));
+    //return of(DISHES).pipe(delay(2000));
+    return this.http.get<Dish[]>(baseURL + 'dishes')
+    .pipe(catchError(this.ProcessHttpmsgService.handleError));
   }
 
   getDish(id: string): Observable<Dish> {
-    return of(DISHES.filter((dish) => (dish.id === id))[0]).pipe(delay( 2000));
-
+    //return of(DISHES.filter((dish) => (dish.id === id))[0]).pipe(delay( 2000));
+    return this.http.get<Dish>(baseURL + 'dishes/' + id)
+    .pipe(catchError(this.ProcessHttpmsgService.handleError));
   }
 
   getFeaturedDish(): Observable<Dish> {
-    return of(DISHES.filter((dish) => dish.featured)[0]).pipe(delay(2000));
+    //return of(DISHES.filter((dish) => dish.featured)[0]).pipe(delay(2000));
+    return this.http.get<Dish[]>(baseURL + 'dishees?featured=true') // si quiere quitar el error entonces solo arreglar dishees a dishes
+      .pipe( map(dishes => dishes[0]))
+      .pipe(catchError(this.ProcessHttpmsgService.handleError));
   }
 
   getDishIds(): Observable<string[] | any> {
-    return of(DISHES.map(dish => dish.id));
+    //return of(DISHES.map(dish => dish.id));
+    return this.getDishes().pipe(map(dishes => dishes.map(dish => dish.id)))
+      .pipe(catchError(error => error));
   }
 }
