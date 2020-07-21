@@ -119,7 +119,7 @@ export class DishService {
 
   getFeaturedDish(): Observable<Dish> {
     //return of(DISHES.filter((dish) => dish.featured)[0]).pipe(delay(2000));
-    return this.http.get<Dish[]>(baseURL + 'dishees?featured=true') // si quiere quitar el error entonces solo arreglar dishees a dishes
+    return this.http.get<Dish[]>(baseURL + 'dishes?featured=true') // si quiere quitar el error entonces solo arreglar dishees a dishes o para poner el error poner dishees
       .pipe( map(dishes => dishes[0]))
       .pipe(catchError(this.ProcessHttpmsgService.handleError));
   }
