@@ -39,6 +39,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { baseURL } from './menu/shared/baseurl';
 import { HighlightDirective } from './directives/highlight.directive';
+//import { FavoritesComponent } from './favorites/favorites.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
   declarations: [

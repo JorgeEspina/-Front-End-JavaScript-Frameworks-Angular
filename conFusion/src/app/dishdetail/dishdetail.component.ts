@@ -7,6 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../menu/shared/comment';
 import { visibility, flyInOut, expand } from '../animations/app.animation';
+import { FavoriteService } from '../services/favorite.service';
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
@@ -132,4 +133,10 @@ export class DishdetailComponent implements OnInit {
       rating: 5
     });
   }
+  /*addToFavorites() {
+    if (!this.favorite) {
+      this.favoriteService.postFavorite(this.dish._id)
+        .subscribe(favorites => { console.log(favorites); this.favorite = true; });
+    }
+  }*/
 }
